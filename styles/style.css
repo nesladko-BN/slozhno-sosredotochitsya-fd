@@ -1,5 +1,248 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
+  display: grid;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: var(--bg-color, #000028);
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+}
+
+.recording {
+	position: absolute;
+	inset-block-start: 10px;
+	inset-inline-end: 38px;
+	color: var(--accent-color, #ff0070);
+	font-size: 18px;
+	display: flex;
+}
+
+.recording::before {
+	content: 'REC';
+	color: var(--accent-color, #ff0070);
+}
+
+.recording::after {
+	content: '';
+	position: absolute;
+	display: block;
+	inline-size: 9px;
+	block-size: 9px;
+	inset-inline-start: 43px;
+	inset-block-start: 8px;
+	border-radius: 50%;
+	background-color: var(--accent-color, #ff0070);
+	box-shadow: 0 0 4px 3px var(--accent-color, #ff0070);
+}
+
+.decorated-zone::after,
+.decorated-zone::before {
+	content: '';
+	position: absolute;
+	display: block;
+	inline-size: 25px;
+	block-size: 25px;
+}
+
+.decorated-zone::before {
+	inset-block-start: 10px;
+	inset-inline-end: 10px;
+	border-inline-end: 1px solid var(--accent-color, #ff0070);
+	border-block-start: 1px solid var(--accent-color, #ff0070);
+}
+
+.decorated-zone::after {
+	inset-block-end: 10px;
+	inset-inline-start: 10px;
+	border-inline-start: 1px solid var(--accent-color, #ff0070);
+	border-block-end: 1px solid var(--accent-color, #ff0070);
+}
+
+.header {
+  block-size: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-self: end;
+  align-items: end;
+  position: relative;
+  background-image: var(--cover-image, url("../images/cover-image.png"));
+  background-color: var(--bg-color, #000028);
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.header__theme-menu {
+  justify-self: end;
+  align-self: start;
+  margin-top: 69px;
+}
+
+.header__theme-menu-list {
+  margin-inline-end: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--accent-color, #ff0070);
+}
+
+.header__theme-menu-item {
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size);
+}
+
+.header__theme-menu-button {
+  text-transform: lowercase;
+  border: 1px solid transparent;
+  padding: 1.5px 13px;
+  background-color: inherit;
+  outline: none;
+  transition: 0.2s border-color ease-in;
+}
+
+.header__theme-menu-button_active {
+  border-color: currentColor;
+  pointer-events: none;
+  cursor: default;
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+  border-block-end: 1px solid var(--accent-color, #ff0070);
+}
+
+.header__theme-menu-button:hover {
+  border-color: var(--color-box-hover, #ff007040);
+  cursor: pointer;
+}
+
+.header__title {
+  justify-self: start;
+  align-self: center;
+  color: var(--color-text-title, #db00ff);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  margin-inline-start: 10px;
+  line-height: 82.5%;
+  margin-block-end: 55px;
+  text-shadow: 4px 4px 0 var(--accent-color, #ff0070);
+}
+
+.header__text {
+  font-style: normal;
+  font-weight: 700;
+  font-size: var(--font-size);
+  line-height: 23px;
+  margin-inline-start: 10px;
+  margin-inline-end: 10px;
+  margin-block-end: 66px;
+  color: var(--text-h3, #000028);
+}
+
+.title-decor {
+  background-color: var(--accent-color, #ff0070);
+}
+
+.main {
+  width: 100vw;
+  margin-block-end: 40px;
+}
+
+.section {
+  margin: 40px 10px 0 10px;
+}
+
+.section-title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: var(--font-size);
+  line-height: 23px;
+  color: var(--decorated-color, #ff0070);
+}
+
+.section-heading {
+  margin-block-start: 20px;
+  margin-block-end: 10px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: var(--font-size);
+  line-height: 23px;
+  color: var(--text-h3, #000028);
+}
+
+.paragraph {
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size);
+  line-height: 130%;
+  color: var(--color-text-paragraph, #f1b2ce);
+}
+
+.why {
+  padding-bottom: 10px;
+}
+
+.what {
+  padding-bottom: 13px;
+}
+
+.how {
+  padding-bottom: 10px;
+}
+
+.section-heading-how {
+  margin-block-start: 20px;
+  margin-block-end: 10px;  
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--font-size);
+  line-height: 23px;
+  color: var(--color-text-h3, #000028);
+}
+
+.link {
+	cursor: pointer;
+	text-decoration: none;
+	color: var(--text-color, #f1b2ce);
+	text-shadow: 2px 1.5px 0 var(--accent-color, #ff0070);
+	border-bottom: 1px solid transparent;
+}
+
+.link:hover {
+	border-bottom: 1px solid var(--text-color, #f1b2ce);
+	text-decoration: none;
+}
+
+.link:focus {
+	outline: none;
+}
+
+.link:focus-visible {
+	outline: 1px solid var(--text-color, #f1b2ce);
+}
+
+.pictures {
+  margin-bottom: 13px;
+}
+
+.pictures-collage {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px; 
+}
+
+.footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.footer__title {
+  color: var(--color-text-title, #db00ff);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  margin-inline-start: 0;
+  margin-block-start: 36px;
+  line-height: 82.5%;
+  margin-block-end: 55px;
+  text-shadow: 4px 4px 0 var(--accent-color, #ff0070);
 }
