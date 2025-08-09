@@ -6,7 +6,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-color: var(--bg-color, #000028);
-
+  min-width: 375px;
+  max-width: 1024px;
+  box-sizing: border-box;
+  overflow-x: hidden;
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
 }
 
@@ -61,8 +64,7 @@
 }
 
 .header {
-  block-size: 100vh;
-  width: 100%;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -74,10 +76,11 @@
 .header__theme-menu {
   justify-self: end;
   align-self: end;
+  margin-inline-end: 10px;
+  margin-block-end: 66px;
 }
 
 .header__theme-menu-list {
-  margin-inline-end: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -88,6 +91,8 @@
   font-style: normal;
   font-weight: 400;
   font-size: var(--font-size);
+  display: block;
+  width: 100%;
 }
 
 .header__theme-menu-button {
@@ -116,7 +121,7 @@
 }
 
 .header__theme-menu-button:focus-visible {
-	border: 1px solid var(--color-box-hover, #ff007040);
+	outline: 1px solid var(--color-box-hover, #ff007040);
 }
 
 .header__title {
@@ -125,8 +130,9 @@
   color: var(--color-text-title, #db00ff);
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   margin-inline-start: 10px;
+  margin-inline-end: 10px;
   line-height: 82.5%;
-  margin-block-end: 55px;
+  margin-block-end: 56px;
   text-shadow: 4px 4px 0 var(--accent-color, #ff0070);
 }
 
@@ -137,8 +143,9 @@
   line-height: 23px;
   margin-inline-start: 10px;
   margin-inline-end: 10px;
-  margin-block-end: 66px;
+  margin-bottom: 66px;
   color: var(--text-h3, #000028);
+  
 }
 
 .title-decor {
@@ -146,19 +153,20 @@
 }
 
 .main {
-  width: 100vw;
   margin-block-end: 40px;
+  box-sizing: border-box;
 }
 
 .section {
-  margin: 40px 10px 0 10px;
+  margin: 40px 0;
+  padding: 0 calc(10px - (100vw - 100%) / 2);
 }
 
 .section-title {
   font-style: normal;
   font-weight: 700;
   font-size: var(--font-size);
-  line-height: 23px;
+  line-height: 130%;
   color: var(--decorated-color, #ff0070);
 }
 
@@ -168,7 +176,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: var(--font-size);
-  line-height: 23px;
+  line-height: 130%;
   color: var(--text-h3, #000028);
 }
 
@@ -192,9 +200,13 @@
   padding-bottom: 10px;
 }
 
+.questions-how {
+  margin-block-start: -4px;
+}
+
 .section-heading-how {
   margin-block-start: 20px;
-  margin-block-end: 10px;  
+  margin-block-end: 10px;
   font-style: normal;
   font-weight: 400;
   font-size: var(--font-size);
@@ -230,7 +242,10 @@
 .pictures-collage {
   display: flex;
   flex-direction: column;
-  row-gap: 10px; 
+  gap: 10px;
+  inline-size: 100%;
+  block-size: auto;
+  max-width: 100vw;
 }
 
 .footer {
@@ -244,14 +259,12 @@
 .footer__title {
   color: var(--color-text-title, #db00ff);
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
-  margin-inline-start: 0;
-  margin-block-start: 36px;
   line-height: 82.5%;
-  margin-block-end: 55px;
+  margin-block-start: 25px;
   text-shadow: 4px 4px 0 var(--accent-color, #ff0070);
 }
 
-@media (width > 768px) or (width > 1024px){
+@media (min-width: 768px) or (min-width: 1024px) {
   .header__title {
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
@@ -272,10 +285,13 @@
   }
 
   .section {
-    margin: 60px 0 0 20px;
+    margin: 60px 0;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 13px;
   }
 
   .section-heading {
@@ -292,24 +308,29 @@
 
   .why {
     grid-column: 2 / 4;
+    margin-left: 7px;
     margin-bottom: -10px;
   }
   
   .what {
     grid-column: 1 / 4;
+    margin-top: 6px;
     margin-bottom: -10px;
+  }
+
+  .questions-how {
+    margin-top: 3px;
   }
 
   .how {
     grid-column: 2 / 4;
+    margin-inline-start: 9px;
   }
 
   .img {
     grid-column: 1 / 4;
-  }
-
-  .pictures .section-heading {
-    margin-block-end: 0;
+    margin-block-start: -12px;
+    margin-block-end: 20px;
   }
 
   .pictures-collage {
@@ -351,32 +372,56 @@
   }
 }
 
-@media (width > 768px) {
+@media (min-width: 768px) {
   .header__theme-menu {
-    align-self: end;
-    margin-block-end: 173px;
+    margin-inline-end: 20px;
+    margin-top: 187px;
   }
 
   .header__title {
-    page-orientation: center;
     margin-inline-start: 0;
-    margin-block-end: 162px;
+    align-self: center;
+    margin-block-start: 106px;
   }
 
   .header__text {
-    width: 50vw;
-    margin-inline-start: 50vw;
+    width: calc(50% - 20px);
+    margin-inline-start: auto;
     margin-inline-end: 20px;
+    margin-block-start: 109px;
     margin-block-end: 183px;
   }
+
+  .pictures {
+    margin-bottom: 0;
+  }
+
+  .footer {
+    height: 100vh;
+    align-self: center;
+  }
+
+  .footer__title {
+    margin-block-start: 4px;
+    justify-content: center;
+    align-items: center;
+  }
+
 }
 
-@media (width > 1024px) {
+@media (min-width: 1024px) {
+  .header {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    width: 100%;
+  }
+
   .header__theme-menu {
     margin-block-end: 273px;
     justify-self: center;
     align-self: start;
-    margin-top: 20px;
+    margin-top: 16px;
+    margin-left: 12px;
   }
 
   .header__theme-menu-list {
@@ -386,17 +431,33 @@
   }
 
   .header__title {
-    margin-block-end: 114px;
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header__title {
+    margin-top: 5px;
+    justify-self: start;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    margin-block-end: 4px;
   }
 
   .header__text {
     margin-block-end: 134px;
   }
 
+  .why {
+    margin-left: 5px;
+  }
+
   .what {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
+  }
+
+  .how {
+    margin-left: 5px;
   }
 
   .pictures .section-heading {
@@ -415,5 +476,15 @@
     grid-column: 3 / 4;
   }
 
+    .footer {
+    height: 100vh;
+    min-height: 1024px;
+    align-self: center;
+  }
 
+  .footer__title {
+    margin-block-start: ;
+    justify-content: center;
+    align-items: center;
+  }
 }
