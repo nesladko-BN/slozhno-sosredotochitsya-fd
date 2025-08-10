@@ -1,18 +1,21 @@
 :root.theme-light {
+  --cover-image: url("../images/cover-image-light.png");
   --bg-color: currentColor;
   --color-text-h3: #353430;
-  --color-box-hover: #353430;
+  --color-box-hover: rgba(50, 49, 45, 0.4);
   --color-text-title: #ffc2e6;
   --accent-color: #ff8dcb;
   --decorated-color: #353430;
   --color-text-paragraph: #353430;
   --content-rec: " ";
   --rec-size: 0;
-  --bg-image-dark: url("../images/cover-image-light.png");
+  --text-color: #353430;
+  --focus-text-color: #353430;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
+    --cover-image: url("../images/cover-image-light.png");
     --bg-color: currentColor;
     --color-text-h3: #353430;
     --color-box-hover: #353430;
@@ -21,6 +24,7 @@
     --decorated-color: #353430;
     --color-text-paragraph: #353430;
     --recoring-color: none;
-    --bg-image-dark: url("../images/cover-image-light.png");
+    --text-color: #353430;
+    --focus-text-color: #353430;
   }
 }
