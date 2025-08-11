@@ -146,7 +146,7 @@
   align-self: start;
   margin-inline-start: 10px;
   margin-inline-end: 10px;
-  color: var(--text-h3, #000028);
+  color: var(--color-text-h3, #000028);
 }
 
 .title-decor {
@@ -154,7 +154,6 @@
 }
 
 .main {
-  margin-block-end: 40px;
   box-sizing: border-box;
 }
 
@@ -178,7 +177,7 @@
   font-weight: 700;
   font-size: var(--font-size, 18px);
   line-height: 130%;
-  color: var(--text-h3, #000028);
+  color: var(--color-text-h3, #000028);
 }
 
 .paragraph {
@@ -228,10 +227,6 @@
   color: var(--focus-text-color, #f1b2ce);
 }
 
-.pictures {
-  margin-bottom: 10px;
-}
-
 .pictures-collage {
   display: flex;
   flex-direction: column;
@@ -254,7 +249,7 @@
   color: var(--color-text-title, #db00ff);
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   line-height: 82.5%;
-  margin-block-start: -20px;
+  
   text-shadow: 4px 4px 0 var(--accent-color, #ff0070);
 }
 
@@ -405,11 +400,8 @@
   }
 
   .footer {
+    margin-top: 35px;
     min-height: 1024px;
-  }
-
-  .footer__title {
-    margin-block-start: 4px;
   }
 }
 
